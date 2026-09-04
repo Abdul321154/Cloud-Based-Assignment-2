@@ -1,0 +1,15 @@
+services:
+  builder:
+    build: .
+    container_name: phoneme-activity-builder
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=file:/app/data/dev.db
+      - NODE_ENV=production
+    volumes:
+      - builder-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  builder-data:
