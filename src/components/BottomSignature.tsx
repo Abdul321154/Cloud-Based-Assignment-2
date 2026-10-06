@@ -1,5 +1,5 @@
 const SIGNATURE_ITEMS = [
-  { label: "Student Name", value: "Abdullah Adnan Yakoob Al-Mashhadani" },
+  { label: "Student Name", value: "" },
   { label: "Student Number", value: "21991414" },
 ];
 
