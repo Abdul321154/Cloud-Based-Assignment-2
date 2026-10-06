@@ -6,8 +6,8 @@ Search**. Teachers manage phoneme-based word lists and activity settings in a
 database and generate downloadable, self-contained HTML activities from the
 stored data.
 
-This repository covers **Assessment 1 (frontend)** and **Assessment 2 (backend
-& database)** of CSE3CWA.
+This repository covers **Assessment 1 (frontend)**, **Assessment 2 (backend
+& database)**, and **Assessment 3 (data-driven features and reporting)** of CSE3CWA.
 
 ---
 
@@ -90,6 +90,7 @@ Useful scripts:
 npm run db:studio                 # browse the database in Prisma Studio
 npm run db:seed                   # re-seed example data (only if empty)
 npm run lint                      # ESLint
+npm run test                      # Run Playwright tests
 ```
 
 ---
@@ -120,8 +121,55 @@ docker compose down
 
 ---
 
+## Testing
+
+### Playwright Tests
+
+End-to-end tests for both the builder and generated output use cases:
+
+```bash
+npx playwright test
+```
+
+To run tests in headed mode:
+
+```bash
+npx playwright test --headed
+```
+
+To view the HTML test report:
+
+```bash
+npx playwright show-report
+```
+
+### JMeter Load Testing
+
+Performance testing with different load levels (1, 10, 100, 1000 users):
+
+```bash
+cd jmeter-tests
+./run-load-test.sh
+```
+
+Note: Requires JMeter to be installed separately.
+
+### Lighthouse Accessibility Checks
+
+Accessibility evaluation using Lighthouse:
+
+1. Start the development server: `npm run dev`
+2. Open Chrome DevTools
+3. Go to the Lighthouse tab
+4. Select "Accessibility" category
+5. Run audit
+6. Review results and implement improvements as needed
+
+---
+
 ## Features
 
+- **Dashboard** (`/dashboard`) - view activity statistics and system health
 - **Activity Library** (`/library`) - create, read, update and delete saved
   phoneme activities. Generate downloadable HTML directly from stored data.
 - **Wordle builder** (`/wordle`) - build a phoneme Wordle, preview it live, save
@@ -144,6 +192,7 @@ prisma/
 src/
   app/
     api/               # CRUD route handlers + health
+    dashboard/         # Data-driven dashboard and reporting views
     health/            # GET /health
     library/           # Activity library (CRUD UI)
     wordle/            # Wordle builder
@@ -151,6 +200,8 @@ src/
   components/          # Shared UI (nav, editor, etc.)
   lib/                 # prisma client, validation, api client
   utils/               # HTML document builders, export helpers
+tests/                 # Playwright end-to-end tests
+jmeter-tests/          # JMeter load testing configurations
 Dockerfile             # multi-stage container build
 docker-compose.yml     # one-command run with persistent volume
 ```
@@ -164,3 +215,5 @@ docker-compose.yml     # one-command run with persistent volume
 - Prisma. (2025). *Prisma documentation*. https://www.prisma.io/docs
 - Zod. (2025). *Zod documentation*. https://zod.dev
 - Docker. (2025). *Docker documentation*. https://docs.docker.com
+- Playwright. (2025). *Playwright documentation*. https://playwright.dev
+- Apache JMeter. (2025). *JMeter documentation*. https://jmeter.apache.org
