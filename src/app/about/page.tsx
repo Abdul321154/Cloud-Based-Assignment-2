@@ -63,7 +63,7 @@ export default function ProjectOverview() {
           </h2>
 
           <p className="text-lg leading-8 text-slate-600 dark:text-slate-300">
-            <strong>Student Name:</strong> 
+            <strong>Student Name:</strong> Abdullah Adnan Yakoob Al-Mashhadani
           </p>
           <p className="text-lg leading-8 text-slate-600 dark:text-slate-300">
             <strong>Student Number:</strong> 21991414

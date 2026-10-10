@@ -157,6 +157,7 @@ export function ActivityEditor({ activity, onSaved, onCancel }: ActivityEditorPr
         <label>
           <span className={labelClass}>Activity name</span>
           <input
+            name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             className={`${inputClass} w-full`}
@@ -167,6 +168,7 @@ export function ActivityEditor({ activity, onSaved, onCancel }: ActivityEditorPr
         <label>
           <span className={labelClass}>Activity type</span>
           <select
+            name="activityType"
             value={activityType}
             onChange={(e) => setActivityType(e.target.value as ActivityType)}
             className={`${inputClass} w-full`}
@@ -182,6 +184,7 @@ export function ActivityEditor({ activity, onSaved, onCancel }: ActivityEditorPr
         <label>
           <span className={labelClass}>Difficulty</span>
           <select
+            name="difficulty"
             value={difficulty}
             onChange={(e) => setDifficulty(e.target.value as DifficultyLevel)}
             className={`${inputClass} w-full`}
@@ -196,6 +199,7 @@ export function ActivityEditor({ activity, onSaved, onCancel }: ActivityEditorPr
 
         <label className="flex items-end gap-2">
           <input
+            name="showHints"
             type="checkbox"
             checked={showHints}
             onChange={(e) => setShowHints(e.target.checked)}
@@ -207,6 +211,7 @@ export function ActivityEditor({ activity, onSaved, onCancel }: ActivityEditorPr
           <label>
             <span className={labelClass}>Number of guesses</span>
             <input
+              name="numberOfGuesses"
               type="number"
               min={1}
               max={20}
@@ -222,6 +227,7 @@ export function ActivityEditor({ activity, onSaved, onCancel }: ActivityEditorPr
             <label>
               <span className={labelClass}>Rows</span>
               <input
+                name="rows"
                 type="number"
                 min={2}
                 max={40}
@@ -233,6 +239,7 @@ export function ActivityEditor({ activity, onSaved, onCancel }: ActivityEditorPr
             <label>
               <span className={labelClass}>Columns</span>
               <input
+                name="columns"
                 type="number"
                 min={2}
                 max={40}
@@ -273,12 +280,14 @@ export function ActivityEditor({ activity, onSaved, onCancel }: ActivityEditorPr
             className="flex flex-col gap-2 rounded-xl border border-slate-200 p-3 dark:border-slate-700 sm:flex-row sm:items-center"
           >
             <input
+              name="phonemes"
               value={word.phonemes}
               onChange={(e) => updateWord(index, { phonemes: e.target.value })}
               className={`${inputClass} flex-1`}
               placeholder="phonemes e.g. tʃ æ t"
             />
             <input
+              name="english"
               value={word.english}
               onChange={(e) => updateWord(index, { english: e.target.value })}
               className={`${inputClass} sm:w-40`}

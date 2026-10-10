@@ -36,7 +36,7 @@ const PROMO_SECTIONS = [
 ];
 
 const SIGNATURE_ITEMS = [
-  { label: "Student Name", value: "" },
+  { label: "Student Name", value: "Abdullah Adnan Yakoob Al-Mashhadani" },
   { label: "Student Number", value: "21991414" },
 ];
 

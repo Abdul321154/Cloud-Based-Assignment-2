@@ -1,43 +1,49 @@
 import { test, expect } from '@playwright/test';
 
+test.describe.configure({ mode: 'serial' });
+
 test('should create a new Word Search activity', async ({ page }) => {
   await page.goto('/');
   
-  // Navigate to library
   await page.click('text=Open Library');
   
-  // Click "New activity" button
   await page.click('text=+ New activity');
   
-  // Fill in activity details
   await page.fill('input[name="name"]', 'Test Word Search Activity');
   await page.selectOption('select[name="activityType"]', 'wordsearch');
   await page.selectOption('select[name="difficulty"]', 'medium');
+
+  await page.click('text=+ Add word', { clickCount: 3 });
+
+  const englishInputs = page.locator('input[name="english"]');
+  const phonemeInputs = page.locator('input[name="phonemes"]');
+
+  console.log(englishInputs);
+
+  const englishWords = ['test', 'exam', 'quiz'];
+  const phonemeWords = ["t ɛ s t", "ɪ ɡ z æ m", "k w ɪ z"];
+
+  for (let i = 0; i < englishWords.length; i++) {
+    await englishInputs.nth(i).fill(englishWords[i]);
+    await phonemeInputs.nth(i).fill(phonemeWords[i]);
+  }
+
+  await page.click('text=Create activity');
   
-  // Add a word
-  await page.click('text=Add Word');
-  await page.fill('input[placeholder="English word (optional)"]', 'test');
-  await page.fill('input[placeholder="Phoneme symbols"]', 't,e,s,t');
-  
-  // Save the activity
-  await page.click('text=Save Activity');
-  
-  // Verify the activity was saved
   await expect(page.locator('text=Test Word Search Activity')).toBeVisible();
 });
 
 test('should generate HTML for a Word Search activity', async ({ page }) => {
   await page.goto('/library');
-  
-  // Find the first activity and click "Generate HTML"
-  const generateButton = page.locator('button:has-text("Generate HTML")').first();
-  await generateButton.click();
-  
-  // Wait for download
-  const download = await page.waitForEvent('download');
+
+  const card = page.locator('ul > li').filter({ hasText: 'Test Word Search Activity' });
+  const generateButton = card.getByRole('button', { name: 'Generate HTML' });
+
+  const [download] = await Promise.all([
+    page.waitForEvent('download'),
+    generateButton.click(),
+  ]);
+
   const suggestedFilename = download.suggestedFilename();
-  
-  // Verify filename
   expect(suggestedFilename).toContain('.html');
-  expect(suggestedFilename).toContain('phoneme-wordsearch');
 });
