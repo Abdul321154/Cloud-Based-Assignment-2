@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const NAV_LINKS = Object.freeze([
   { path: "/", label: "Home" },
+  { path: "/dashboard", label: "Dashboard" },
   { path: "/about", label: "About" },
   { path: "/library", label: "Library" },
   { path: "/wordle", label: "Wordle" },

@@ -95,8 +95,8 @@ export default function Dashboard() {
   
   // Calculate creation dates for activity timeline
   const activityDates = activities.map(a => new Date(a.createdAt));
-  const earliestDate = activityDates.length > 0 ? new Date(Math.min(...activityDates)) : new Date();
-  const latestDate = activityDates.length > 0 ? new Date(Math.max(...activityDates)) : new Date();
+  const earliestDate = activityDates.length > 0 ? new Date(Math.min(...activityDates.map(d => d.getTime()))) : new Date();
+  const latestDate = activityDates.length > 0 ? new Date(Math.max(...activityDates.map(d => d.getTime()))) : new Date();
   
   // Activity type distribution
   const activityTypeCounts = activities.reduce((acc, activity) => {

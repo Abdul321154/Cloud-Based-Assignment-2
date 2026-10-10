@@ -7,7 +7,7 @@ import type {
 } from "@/types";
 
 const STUDENT_STAMP = Object.freeze({
-  name: "Abdullah Adnan Yakoob Al-Mashhadani",
+  name: "",
   number: "21991414",
   downloadKey: "21991414",
 });

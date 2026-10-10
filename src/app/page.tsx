@@ -6,6 +6,13 @@ import { pickOuterSpacing, pickReadingWidth } from "@/utils/viewportTokens";
 
 const PROMO_SECTIONS = [
   {
+    heading: "Dashboard",
+    description:
+      "View activity statistics, system health, and usage reports. Monitor how your phoneme activities are being used.",
+    to: "/dashboard",
+    actionText: "View Dashboard",
+  },
+  {
     heading: "Activity Library",
     description:
       "Create, edit and delete saved phoneme activities. All word lists and settings are stored in a database and can be reused to generate downloadable HTML.",
