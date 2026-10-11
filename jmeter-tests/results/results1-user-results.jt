@@ -1,0 +1,3 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1791710276635,21,Create Wordle Activity,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:3000 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused",Activity Creation Thread Group 1-1,text,false,,2623,0,1,1,http://localhost:3000/api/activities,0,0,21
+1791710325433,235,Create Wordle Activity,201,Created,Activity Creation Thread Group 1-1,text,true,,1125,401,1,1,http://localhost:3000/api/activities,227,0,17
